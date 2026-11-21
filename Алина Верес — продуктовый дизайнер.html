@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Алина Верес — продуктовый дизайнер</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F0FA;--surface:#FFFFFF;--ink:#16132B;--muted:#5E5A7A;--line:#D9D5EE;
+  --accent:#4B3BFF;--accent2:#FF6B4A;--on-accent:#fff;--shadow:rgba(40,30,120,.18);
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0E0C1F;--surface:#1A1733;--ink:#F1EFFF;--muted:#A5A1C6;--line:#2D2958;--accent:#8E84FF;--accent2:#FF8566;--on-accent:#0E0C1F;--shadow:rgba(0,0,0,.5)}
+}
+:root[data-theme="dark"]{--bg:#0E0C1F;--surface:#1A1733;--ink:#F1EFFF;--muted:#A5A1C6;--line:#2D2958;--accent:#8E84FF;--accent2:#FF8566;--on-accent:#0E0C1F;--shadow:rgba(0,0,0,.5)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* header */
+header{display:flex;justify-content:space-between;align-items:center;padding:24px 0}
+.logo{font-family:var(--display);font-weight:800;font-size:18px;text-decoration:none}
+.logo i{color:var(--accent2);font-style:normal}
+nav{display:flex;gap:8px;align-items:center}
+nav a,.btn{font:500 15px var(--body);text-decoration:none;padding:10px 18px;border-radius:999px;border:1px solid transparent;transition:.25s;cursor:pointer;background:none;color:var(--ink)}
+nav a:hover{background:var(--surface)}
+.btn.primary{background:var(--accent);color:var(--on-accent);font-weight:700}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px var(--shadow)}
+.btn.ghost{border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--ink)}
+#theme{width:40px;height:40px;padding:0;border:1px solid var(--line);border-radius:50%;font-size:17px}
+
+/* hero */
+.hero{padding:7vh 0 9vh;position:relative}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(44px,10.5vw,128px);line-height:.98;letter-spacing:-.04em;margin:0}
+.hero h1 .row{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .row span{display:inline-block;transform:translateY(110%);animation:rise 1s cubic-bezier(.2,.9,.25,1) forwards}
+.hero h1 .row:nth-child(2) span{animation-delay:.12s;color:var(--accent)}
+@keyframes rise{to{transform:none}}
+.lead{max-width:520px;margin:32px 0;color:var(--muted);font-size:19px;opacity:0;animation:fade .8s .7s forwards}
+.cta{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:fade .8s .85s forwards}
+@keyframes fade{to{opacity:1}}
+.blob{position:absolute;right:-40px;top:6vh;width:min(38vw,360px);aspect-ratio:1;border-radius:42% 58% 55% 45%/50% 42% 58% 50%;background:linear-gradient(135deg,var(--accent),var(--accent2));filter:blur(.3px);animation:morph 12s ease-in-out infinite;opacity:.9;z-index:-1}
+@keyframes morph{50%{border-radius:58% 42% 40% 60%/45% 58% 42% 55%;transform:rotate(40deg) scale(1.06)}}
+
+section{padding:8vh 0}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(26px,4vw,40px);letter-spacing:-.03em;margin:0 0 36px}
+
+/* projects */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
+.card{all:unset;box-sizing:border-box;cursor:pointer;background:var(--surface);border-radius:28px;padding:14px 14px 22px;border:1px solid var(--line);transition:transform .35s cubic-bezier(.2,.9,.25,1),box-shadow .35s;display:block}
+.card:hover{transform:translateY(-6px);box-shadow:0 22px 40px var(--shadow)}
+.card:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.cover{height:190px;border-radius:18px;margin-bottom:18px;position:relative;overflow:hidden}
+.cover::after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.28);right:-20px;bottom:-30px;transition:transform .5s}
+.card:hover .cover::after{transform:scale(1.8)}
+.card h3{font-family:var(--display);font-weight:600;font-size:19px;margin:0 8px 4px;letter-spacing:-.02em}
+.card p{margin:0 8px;color:var(--muted);font-size:15px}
+
+.card.from-l,.card.from-r{opacity:0;transition:transform 1s cubic-bezier(.2,.9,.25,1),opacity .8s}
+.card.from-l{transform:translateX(-110px) rotate(-3deg)}
+.card.from-r{transform:translateX(110px) rotate(3deg)}
+.card.from-l.in,.card.from-r.in{opacity:1;transform:none}
+
+/* about */
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start}
+.about p{margin:0 0 16px;max-width:560px}
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tags span{padding:8px 16px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-weight:500;font-size:15px;transition:.25s}
+.tags span:hover{background:var(--accent);color:var(--on-accent);border-color:var(--accent);transform:rotate(-3deg)}
+@media(max-width:760px){.about{grid-template-columns:1fr;gap:28px}.blob{opacity:.35}nav a.hide{display:none}}
+
+/* contact */
+.contact{background:var(--ink);color:var(--bg);border-radius:36px;padding:clamp(32px,6vw,72px);margin-bottom:40px}
+.contact h2{margin-bottom:16px}
+.contact p{margin:0 0 28px;opacity:.75;max-width:460px}
+.contact .btn.primary{background:var(--bg);color:var(--ink)}
+footer{padding:0 0 40px;color:var(--muted);font-size:14px}
+
+/* modal */
+.overlay{position:fixed;inset:0;background:rgba(10,8,30,.55);backdrop-filter:blur(8px);display:grid;place-items:center;padding:20px;z-index:50;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.overlay.open{opacity:1;visibility:visible}
+.modal{background:var(--surface);width:min(560px,100%);max-height:88vh;overflow:auto;border-radius:30px;padding:14px 14px 30px;transform:translateY(40px) scale(.9);opacity:0;transition:transform .45s cubic-bezier(.2,1.1,.3,1),opacity .3s;position:relative}
+.overlay.open .modal{transform:none;opacity:1}
+.modal .cover{height:210px;margin-bottom:24px}
+.modal .body{padding:0 16px}
+.modal h3{font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:-.03em;margin:0 0 12px}
+.modal p{color:var(--muted);margin:0 0 18px}
+.close{position:absolute;top:26px;right:26px;width:40px;height:40px;border-radius:50%;border:0;background:var(--surface);color:var(--ink);font-size:20px;cursor:pointer;transition:transform .3s}
+.close:hover{transform:rotate(90deg)}
+.stats{display:flex;gap:28px;margin:0 0 24px}
+.stats b{display:block;font-family:var(--display);font-size:24px;color:var(--accent)}
+.stats small{color:var(--muted)}
+.mail{font-family:var(--display);font-size:clamp(18px,4vw,24px);word-break:break-all;display:block;margin:6px 0 22px;color:var(--accent)}
+.links{display:flex;gap:10px;flex-wrap:wrap}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
+  .hero h1 .row span,.lead,.cta{transform:none;opacity:1}
+  .card.from-l,.card.from-r{transform:none;opacity:1}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="#top" aria-label="Алина Верес">av<i>.</i></a>
+    <nav>
+      <a class="hide" href="#work">Работы</a>
+      <a class="hide" href="#about">Обо мне</a>
+      <button id="theme" class="btn" aria-label="Сменить тему">◐</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div class="blob" aria-hidden="true"></div>
+      <h1><span class="row"><span>Алина</span></span><span class="row"><span>Верес</span></span></h1>
+      <p class="lead">Продуктовый дизайнер. Делаю приложения и сервисы, которыми приятно пользоваться каждый день.</p>
+      <div class="cta">
+        <a class="btn primary" href="#work">Смотреть работы</a>
+        <button class="btn ghost" data-open="contact">Связаться</button>
+      </div>
+    </div>
+
+    <section id="work">
+      <h2>Избранные проекты</h2>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <section id="about">
+      <div class="about">
+        <div>
+          <h2>Обо мне</h2>
+          <p>Шесть лет проектирую интерфейсы для финтеха, медицины и образования. Начинаю с разговоров с пользователями, заканчиваю работающим продуктом.</p>
+          <p>Сейчас живу в Тбилиси и работаю с командами по всему миру. Беру два–три проекта в квартал.</p>
+        </div>
+        <div class="tags" aria-label="Навыки">
+          <span>Дизайн-системы</span><span>Исследования</span><span>Прототипы</span><span>Figma</span><span>Motion</span><span>HTML и CSS</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="contact">
+      <h2>Давайте сделаем что-то хорошее</h2>
+      <p>Расскажите о задаче, и я отвечу в течение двух рабочих дней.</p>
+      <button class="btn primary" data-open="contact">Написать мне</button>
+    </div>
+  </main>
+  <footer>© 2026 Алина Верес</footer>
+</div>
+
+<div class="overlay" id="overlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" id="modal"></div>
+</div>
+
+<script>
+var projects=[
+ {t:"Лента — банк в телефоне",d:"Мобильный банк",g:"linear-gradient(135deg,#4B3BFF,#9B8CFF)",p:"Полностью переработала главный экран и платежи. Пользователи стали находить нужное с первого касания, а поддержка получила на треть меньше обращений.",s:[["+38%","повторных входов"],["−31%","обращений"]]},
+ {t:"Мята — трекер привычек",d:"Приложение для здоровья",g:"linear-gradient(135deg,#00B894,#7DE8C9)",p:"Спроектировала онбординг и систему мягких напоминаний. Без давления и штрафов за пропуски: только поддержка.",s:[["4.8","оценка в сторе"],["120 тыс.","пользователей"]]},
+ {t:"Атлас — платформа курсов",d:"Образовательный сервис",g:"linear-gradient(135deg,#FF6B4A,#FFB199)",p:"Собрала дизайн-систему на 140 компонентов и перевела на неё шесть продуктов компании за один квартал.",s:[["140","компонентов"],["6","продуктов"]]},
+ {t:"Север — кабинет врача",d:"Веб-сервис для клиник",g:"linear-gradient(135deg,#1E2A78,#5A7BFF)",p:"Упростила запись пациентов и работу с картами. Приём в среднем стал короче на четыре минуты.",s:[["−4 мин","на приём"],["35","клиник"]]}
+];
+var grid=document.getElementById('grid'),ov=document.getElementById('overlay'),md=document.getElementById('modal'),last=null;
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var c=e.target;c.classList.add('in');io.unobserve(c);setTimeout(function(){c.classList.remove('from-l','from-r','in')},1100)}})},{threshold:.15});
+projects.forEach(function(p,i){
+  var b=document.createElement('button');b.className='card';b.type='button';
+  b.innerHTML='<div class="cover" style="background:'+p.g+'"></div><h3>'+p.t+'</h3><p>'+p.d+'</p>';
+  b.onclick=function(){openProject(i,b)};b.classList.add(i%2?'from-r':'from-l');grid.appendChild(b);io.observe(b);
+});
+function show(html,from){last=from||document.activeElement;md.innerHTML=html;ov.classList.add('open');ov.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';md.querySelector('.close').focus()}
+function openProject(i,el){
+  var p=projects[i];
+  show('<button class="close" aria-label="Закрыть">✕</button><div class="cover" style="background:'+p.g+'"></div><div class="body"><h3 id="mTitle">'+p.t+'</h3><p>'+p.p+'</p><div class="stats">'+p.s.map(function(s){return '<div><b>'+s[0]+'</b><small>'+s[1]+'</small></div>'}).join('')+'</div><button class="btn primary" data-open="contact">Обсудить похожий проект</button></div>',el);
+}
+function openContact(){
+  show('<button class="close" aria-label="Закрыть">✕</button><div class="body" style="padding-top:34px"><h3 id="mTitle">Напишите мне</h3><p>Лучше всего отвечаю на почту. Опишите задачу и сроки в паре предложений.</p><a class="mail" href="mailto:hello@alinaveres.com">hello@alinaveres.com</a><div class="links"><a class="btn ghost" href="#">Telegram</a><a class="btn ghost" href="#">Behance</a><a class="btn ghost" href="#">LinkedIn</a></div></div>');
+}
+function closeM(){ov.classList.remove('open');ov.setAttribute('aria-hidden','true');document.body.style.overflow='';if(last&&last.focus)last.focus()}
+document.addEventListener('click',function(e){
+  if(e.target.closest('.close')||e.target===ov){closeM();return}
+  var o=e.target.closest('[data-open="contact"]');
+  if(o){var wasOpen=ov.classList.contains('open');if(wasOpen){md.style.opacity=0;setTimeout(function(){openContact();md.style.opacity=''},150)}else{openContact();last=o}}
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeM()});
+document.getElementById('theme').onclick=function(){
+  var r=document.documentElement,dark=r.getAttribute('data-theme')?r.getAttribute('data-theme')==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
+  r.setAttribute('data-theme',dark?'light':'dark');
+};
+</script>
+</body>
+</html>
